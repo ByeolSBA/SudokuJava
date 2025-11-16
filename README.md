@@ -23,7 +23,6 @@ Incluye generación automática de tableros con diferentes niveles de dificultad
    ```bash
    git clone https://github.com/ByeolSBA/SudokuJava.git
 
-
 # 📖 Manual de Usuario
 
 ### 🎮 Inicio del juego
@@ -37,14 +36,14 @@ Incluye generación automática de tableros con diferentes niveles de dificultad
 - Puedes borrar el contenido de una casilla seleccionándola y presionando la tecla **Suprimir/Backspace**.
 
 ### ✅ Validación
-- Una vez completado el tablero, presiona el botón **Validar**.  
+- Una vez completado el tablero, presiona el botón **Comprobar**.  
 - El programa verificará si la solución es correcta.  
 - Si hay errores, se mostrará un mensaje indicando que la solución no es válida.
 
 ### 🧹 Funciones adicionales
-- **Limpiar tablero:** borra todas las casillas y reinicia el juego.  
-- **Resolver automáticamente:** el programa completará el Sudoku con la solución correcta.  
-- **Reiniciar:** vuelve al estado inicial del tablero según la dificultad seleccionada.
+- **Limpiar:** borra todas las casillas libres y deja el tablero con el sudoku original.  
+- **Resolver:** el programa completará el Sudoku con la solución correcta.  
+
 
 ### 📌 Recomendaciones
 - Ingresa solo números del 1 al 9.  
