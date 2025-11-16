@@ -1,5 +1,6 @@
 package vista;
 
+import java.util.Stack;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -351,10 +352,9 @@ public class TableroSudoku extends JPanel {
     }
 
     /**
-     * Método resolver Resuelve automáticamente el Sudoku.
-     * Copia los valores fijos al modelo. 
-     * Usa backtracking para completar el tablero. 
-     * Muestra solución o un mensaje de error si no existe.
+     * Método resolver Resuelve automáticamente el Sudoku. Copia los valores
+     * fijos al modelo. Usa backtracking para completar el tablero. Muestra
+     * solución o un mensaje de error si no existe.
      */
     public void resolver() {
         sudoku.limpiarSudoku();
@@ -375,6 +375,20 @@ public class TableroSudoku extends JPanel {
             }
         } else {
             JOptionPane.showMessageDialog(null, "No hay solucion", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    //deshacer con pila
+    private Stack<JTextField> pilaMovimientos = new Stack<>();
+
+    public void registrarMovimiento(JTextField casilla) {
+        pilaMovimientos.push(casilla);
+    }
+
+    public void deshacerMovimiento() {
+        if (!pilaMovimientos.isEmpty()) {
+            JTextField ultimo = pilaMovimientos.pop();
+            ultimo.setText(""); // borra el último número colocado
         }
     }
 

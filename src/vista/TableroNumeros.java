@@ -10,8 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Clase TableroNumeros
- * Panel lateral que contiene los números del 1 al 9.
+ * Clase TableroNumeros Panel lateral que contiene los números del 1 al 9.
  * Permite al usuario seleccionar un número y colocarlo en el tablero principal.
  */
 public class TableroNumeros extends JPanel {
@@ -30,8 +29,8 @@ public class TableroNumeros extends JPanel {
     private TableroSudoku tableroSudoku;
 
     /**
-     * Constructor de la clase TableroNumeros.
-     * Inicializa los componentes gráficos y obtiene la referencia al tablero principal.
+     * Constructor de la clase TableroNumeros. Inicializa los componentes
+     * gráficos y obtiene la referencia al tablero principal.
      */
     public TableroNumeros() {
         iniciarComponentes();
@@ -39,8 +38,8 @@ public class TableroNumeros extends JPanel {
     }
 
     /**
-     * Método iniciarComponentes
-     * Configura los valores iniciales de tamaño, colores y estilos del panel.
+     * Método iniciarComponentes Configura los valores iniciales de tamaño,
+     * colores y estilos del panel.
      */
     public void iniciarComponentes() {
         txtAncho = 30;
@@ -55,8 +54,7 @@ public class TableroNumeros extends JPanel {
     }
 
     /**
-     * Método crearTablero
-     * Genera el panel lateral con los números del 1 al 9.
+     * Método crearTablero Genera el panel lateral con los números del 1 al 9.
      */
     public void crearTablero() {
         this.setLayout(null);
@@ -66,9 +64,9 @@ public class TableroNumeros extends JPanel {
     }
 
     /**
-     * Método crearCamposTxt
-     * Crea los campos de texto que representan los números del 1 al 9.
-     * Cada número se coloca en una casilla vertical dentro del panel.
+     * Método crearCamposTxt Crea los campos de texto que representan los
+     * números del 1 al 9. Cada número se coloca en una casilla vertical dentro
+     * del panel.
      */
     public void crearCamposTxt() {
         int x = txtMargen;
@@ -90,16 +88,15 @@ public class TableroNumeros extends JPanel {
             if ((i + 1) % 3 == 0) {
                 y += txtMargen;
             }
-            generarEventosTxt(txt); 
+            generarEventosTxt(txt);
         }
     }
 
     /**
-     * Método generarEventosTxt
-     * Asigna eventos de mouse a cada número del panel.
+     * Método generarEventosTxt Asigna eventos de mouse a cada número del panel.
      * (txt) campo de texto que representa el número seleccionado.
      */
-    public void generarEventosTxt(JTextField txt){
+    public void generarEventosTxt(JTextField txt) {
         MouseListener evento = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent me) {
@@ -113,6 +110,7 @@ public class TableroNumeros extends JPanel {
                 }
                 // Coloca el número seleccionado en la casilla activa del tablero
                 tableroSudoku.txtSelected.setText(txt.getText());
+                tableroSudoku.registrarMovimiento(tableroSudoku.txtSelected);
             }
 
             @Override
@@ -137,7 +135,6 @@ public class TableroNumeros extends JPanel {
     }
 
     // Métodos getters y setters para personalizar atributos gráficos
-
     public int getTxtAncho() {
         return txtAncho;
     }
@@ -210,4 +207,3 @@ public class TableroNumeros extends JPanel {
         this.txtForeground2 = txtForeground2;
     }
 }
-

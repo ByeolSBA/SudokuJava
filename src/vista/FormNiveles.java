@@ -1,19 +1,18 @@
 package vista;
 
 /**
- * Clase FormNiveles
- * Ventana gráfica que permite seleccionar el nivel de dificultad del Sudoku.
- * Los niveles disponibles son: fácil (1), medio (2) y difícil (3).
+ * Clase FormNiveles Ventana gráfica que permite seleccionar el nivel de
+ * dificultad del Sudoku. Los niveles disponibles son: fácil (1), medio (2) y
+ * difícil (3).
  */
-
 public class FormNiveles extends javax.swing.JFrame {
-    
+
     private TableroSudoku tableroSudoku;
-    
-    /**
-     * Constructor de la clase FormNiveles.
-     * Inicializa la ventana y recibe el tablero de Sudoku para aplicar el nivel seleccionado.
-     * (tableroSudoku) tablero principal del juego.
+
+    /**zz
+     * Constructor de la clase FormNiveles. Inicializa la ventana y recibe el
+     * tablero de Sudoku para aplicar el nivel seleccionado. (tableroSudoku)
+     * tablero principal del juego.
      */
     public FormNiveles(TableroSudoku tableroSudoku) {
         initComponents();
@@ -148,9 +147,10 @@ public class FormNiveles extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
      /**
-      *Al presionar el Label correspondiente ya sea al nivel facil, medio o dificil
-      *generara un sudoku a esa dificultad facil(1), medio(2), dificil(3)
-      */
+     * Al presionar el Label correspondiente ya sea al nivel facil, medio o
+     * dificil generara un sudoku a esa dificultad facil(1), medio(2),
+     * dificil(3)
+     */
     private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
         tableroSudoku.generarSudoku(1);
     }//GEN-LAST:event_jLabel5MousePressed
@@ -163,7 +163,6 @@ public class FormNiveles extends javax.swing.JFrame {
         tableroSudoku.generarSudoku(3);
     }//GEN-LAST:event_jLabel6MousePressed
 
- 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

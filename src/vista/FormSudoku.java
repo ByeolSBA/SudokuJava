@@ -7,6 +7,7 @@ import java.awt.Color;
  * Sudoku, el panel de números y la selección de niveles.
  */
 public class FormSudoku extends javax.swing.JFrame {
+
     public static TableroSudoku tableroSudoku;
     private TableroNumeros tableroNumeros;
     private FormNiveles formNiveles;
@@ -22,10 +23,9 @@ public class FormSudoku extends javax.swing.JFrame {
 
     /**
      * Método iniciarComponentes Configura y agrega los elementos gráficos del
-     * juego
-     * TableroSudoku: tablero principal donde se juega. 
-     * TableroNumeros: panel lateral con los números disponibles. 
-     * FormNiveles: ventana para seleccionar dificultad.
+     * juego TableroSudoku: tablero principal donde se juega. TableroNumeros:
+     * panel lateral con los números disponibles. FormNiveles: ventana para
+     * seleccionar dificultad.
      */
     public void iniciarComponentes() {
         // Configuración del tablero principal
@@ -90,6 +90,8 @@ public class FormSudoku extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -314,6 +316,36 @@ public class FormSudoku extends javax.swing.JFrame {
         panelFondo.add(jPanel3);
         jPanel3.setBounds(420, 240, 150, 42);
 
+        jPanel10.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel4.setFont(new java.awt.Font("Te X Gyre Bonum", 1, 14)); // NOI18N
+        jLabel4.setText("    DESHACER");
+        jLabel4.setAutoscrolls(true);
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel4MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+
+        panelFondo.add(jPanel10);
+        jPanel10.setBounds(420, 300, 150, 42);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -331,8 +363,8 @@ public class FormSudoku extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Evento al presionar el label de selección de niveles.
-     * Abre la ventana FormNiveles para elegir dificultad.
+     * Evento al presionar el label de selección de niveles. Abre la ventana
+     * FormNiveles para elegir dificultad.
      */
     private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
 
@@ -351,17 +383,24 @@ public class FormSudoku extends javax.swing.JFrame {
         tableroSudoku.limpiar();
     }//GEN-LAST:event_jLabel5MousePressed
     /**
-     * Al presionar el label comprobar, comprueba si el sudoku esta completo y cumple las reglas
+     * Al presionar el label comprobar, comprueba si el sudoku esta completo y
+     * cumple las reglas
      */
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
         tableroSudoku.comprobar();
     }//GEN-LAST:event_jLabel3MousePressed
+
     /**
-     * Al presionar el label resolver, resuelve automaticamente el sudoku mostrando su solucion
+     * Al presionar el label resolver, resuelve automaticamente el sudoku
+     * mostrando su solucion
      */
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
         tableroSudoku.resolver();
     }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        tableroSudoku.deshacerMovimiento();
+    }//GEN-LAST:event_jLabel4MousePressed
 
     public static void main(String args[]) {
         try {
@@ -392,8 +431,10 @@ public class FormSudoku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
