@@ -104,7 +104,7 @@ public class FormSudoku extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("TeX Gyre Bonum Math", 1, 24)); // NOI18N
         jLabel1.setText("SUDOKU");
         panelFondo.add(jLabel1);
-        jLabel1.setBounds(20, 20, 140, 40);
+        jLabel1.setBounds(210, 10, 140, 40);
 
         jPanel2.setBackground(new java.awt.Color(0, 204, 204));
 
