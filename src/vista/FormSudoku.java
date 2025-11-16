@@ -92,6 +92,8 @@ public class FormSudoku extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -346,6 +348,36 @@ public class FormSudoku extends javax.swing.JFrame {
         panelFondo.add(jPanel10);
         jPanel10.setBounds(420, 300, 150, 42);
 
+        jPanel11.setBackground(new java.awt.Color(0, 204, 204));
+
+        jLabel7.setFont(new java.awt.Font("Te X Gyre Bonum", 1, 14)); // NOI18N
+        jLabel7.setText("       PISTA");
+        jLabel7.setAutoscrolls(true);
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel7MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 6, Short.MAX_VALUE))
+        );
+
+        panelFondo.add(jPanel11);
+        jPanel11.setBounds(420, 360, 150, 42);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -402,6 +434,10 @@ public class FormSudoku extends javax.swing.JFrame {
         tableroSudoku.deshacerMovimiento();
     }//GEN-LAST:event_jLabel4MousePressed
 
+    private void jLabel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MousePressed
+        tableroSudoku.mostrarPista();
+    }//GEN-LAST:event_jLabel7MousePressed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -434,7 +470,9 @@ public class FormSudoku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

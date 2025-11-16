@@ -9,6 +9,10 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -45,6 +49,8 @@ public class TableroSudoku extends JPanel {
     private ArrayList<JTextField> listaTxtGenerados;
     // Casilla actualmente seleccionada por el usuario
     public JTextField txtSelected;
+    // Cola pistas
+    private Queue<JTextField> colaPistas = new LinkedList<>();
 
     /**
      * Constructor de la clase TableroSudoku. Inicializa los componentes
@@ -261,6 +267,7 @@ public class TableroSudoku extends JPanel {
         listaTxtGenerados.clear();
         sudoku.generarSudoku(nivel);
         int[][] sudokuGenerado = sudoku.getSudoku();
+
         for (int i = 0; i < listaTxt.length; i++) {
             for (int j = 0; j < listaTxt[0].length; j++) {
                 if (sudokuGenerado[i][j] != 0) {
@@ -277,6 +284,10 @@ public class TableroSudoku extends JPanel {
                 }
             }
         }
+
+        //Reiniciar y llenar la cola de pistas con las casillas vacías
+        colaPistas.clear();
+        inicializarColaPistas();
     }
 
     /**
@@ -428,6 +439,73 @@ public class TableroSudoku extends JPanel {
                 }
             }
         }
+    }
+
+    //cola pistas
+    public void inicializarColaPistas() {
+        List<JTextField> lista = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                if (listaTxt[i][j].getText().isEmpty()) {
+                    lista.add(listaTxt[i][j]);
+                }
+            }
+        }
+        Collections.shuffle(lista); // mezcla aleatoriamente
+        colaPistas = new LinkedList<>(lista); // vuelve a ser una cola
+    }
+
+    public void mostrarPista() {
+        while (!colaPistas.isEmpty()) {
+            JTextField casilla = colaPistas.poll();
+
+            // Si la casilla ya tiene número, la ignoramos y seguimos con la siguiente
+            if (!casilla.getText().isEmpty()) {
+                continue;
+            }
+
+            // Guardar estado actual
+            String[][] estadoOriginal = new String[9][9];
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    estadoOriginal[i][j] = listaTxt[i][j].getText();
+                }
+            }
+
+            // Resolver el tablero
+            resolver();
+
+            // Buscar posición de la casilla
+            int fila = -1, col = -1;
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    if (listaTxt[i][j] == casilla) {
+                        fila = i;
+                        col = j;
+                    }
+                }
+            }
+
+            // Obtener valor correcto
+            String valorCorrecto = listaTxt[fila][col].getText();
+
+            // Restaurar estado original
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    listaTxt[i][j].setText(estadoOriginal[i][j]);
+                }
+            }
+
+            // Mostrar la pista
+            casilla.setText(valorCorrecto);
+            casilla.setForeground(Color.BLACK);     
+            casilla.setBackground(txtBackground1);  
+            casilla.setEditable(false);             
+            listaTxtGenerados.add(casilla);
+            return; 
+        }
+
+        JOptionPane.showMessageDialog(null, "No hay más pistas disponibles.");
     }
 
     // Métodos getter y setter para personalizar atributos gráficos y acceder a las casillas
