@@ -110,7 +110,11 @@ public class TableroNumeros extends JPanel {
                 }
                 // Coloca el número seleccionado en la casilla activa del tablero
                 tableroSudoku.txtSelected.setText(txt.getText());
+                // Registrar movimientos en pila
                 tableroSudoku.registrarMovimiento(tableroSudoku.txtSelected);
+                //Resaltar todas las casillas con dicho numero
+                tableroSudoku.resaltarNumero(txt.getText());
+
             }
 
             @Override

@@ -159,6 +159,8 @@ public class TableroSudoku extends JPanel {
             public void mousePressed(MouseEvent me) {
                 pressed(txt);
                 txtSelected = txt;
+                //resalta casillas con el mismo numero con el cursor
+                resaltarCoincidencias(txt);
             }
 
             @Override
@@ -377,7 +379,7 @@ public class TableroSudoku extends JPanel {
             JOptionPane.showMessageDialog(null, "No hay solucion", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     //deshacer con pila
     private Stack<JTextField> pilaMovimientos = new Stack<>();
 
@@ -389,6 +391,42 @@ public class TableroSudoku extends JPanel {
         if (!pilaMovimientos.isEmpty()) {
             JTextField ultimo = pilaMovimientos.pop();
             ultimo.setText(""); // borra el último número colocado
+        }
+    }
+
+    //Resaltar Numeros Con Panel
+    public void resaltarNumero(String numero) {
+        for (int fila = 0; fila < 9; fila++) {
+            for (int col = 0; col < 9; col++) {
+                JTextField casilla = listaTxt[fila][col];
+                if (casilla.getText().equals(numero)) {
+                    // Cambia el color de fondo para resaltar
+                    casilla.setBackground(Color.YELLOW);
+                } else {
+                    // Restaura el color normal si no coincide
+                    casilla.setBackground(Color.WHITE);
+                }
+            }
+        }
+    }
+
+    //Resaltar Numeros tocando con mouse
+    public void resaltarCoincidencias(JTextField casilla) {
+        String numero = casilla.getText();
+
+        if (numero == null || numero.isEmpty()) {
+            return;
+        }
+
+        for (int fila = 0; fila < 9; fila++) {
+            for (int col = 0; col < 9; col++) {
+                JTextField actual = listaTxt[fila][col];
+                if (actual.getText().equals(numero)) {
+                    actual.setBackground(Color.YELLOW);
+                } else {
+                    actual.setBackground(Color.WHITE);
+                }
+            }
         }
     }
 
